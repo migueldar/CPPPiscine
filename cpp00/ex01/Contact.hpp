@@ -1,21 +1,19 @@
 #pragma once
 
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 class Contact {
-	public:
+	private:
 		std::string		firstName;
 		std::string		lastName;
 		std::string		nickname;
 		long long int	number;
 		std::string		secret;
-
-		Contact() {}
-		Contact(std::string firstName, std::string lastName, std::string nickname, long long int number, std::string secret) {
-			this->firstName = firstName;
-			this->lastName = lastName;
-			this->nickname = nickname;
-			this->number = number;
-			this->secret = secret;
-		}
+		
+	public:
+		Contact();
+		Contact(std::string fN, std::string lN, std::string nick, long long int nbr, std::string sec);
+		~Contact();
 };

@@ -1,5 +1,6 @@
 #include "PhoneBook.hpp"
-#include <string>
+
+PhoneBook::PhoneBook(): lastAdded(8) {}
 
 int nextPosition(int currPosition) {
 	if (currPosition > 7)
@@ -7,16 +8,17 @@ int nextPosition(int currPosition) {
 	return currPosition + 1;
 }
 
-void PhoneBook::add () {
-	// int position = nextPosition(lastAdded);
-	// std::string a;
-	// int x;
+void PhoneBook::add() {
+	int position = nextPosition(lastAdded);
+	std::string fN, lN, nick, ;
 	std::cout << "First Name: " << std::endl;
-	// std::getline(std::cin, a);
-	// std::cin >> a;
-	// std::cout << a << std::endl;
+	std::getline(std::cin, fN);
+
+	std::cout << "Last Name" << std::endl;
+	std::getline(std::cin, lN);
+	std::cout << "Nickname" << std::endl;
 }
 
-void PhoneBook::search () {
-	std::cout << "SEARC" << std::endl;
+void PhoneBook::search() {
+
 }
