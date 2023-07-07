@@ -1,14 +1,15 @@
 #pragma once
 
 #include <iostream>
-#include <istream>
 #include <string>
 #include "Contact.hpp"
 
 class PhoneBook {
 	private:
 		Contact	contacts[8];
-		int		lastAdded;
+		int	lastAdded;
+		static std::string askForInput(const std::string inputAsker);
+        static int nextPosition(int currPosition);
 
 	public:
 		PhoneBook();
