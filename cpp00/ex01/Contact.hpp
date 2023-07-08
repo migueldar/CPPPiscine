@@ -9,15 +9,20 @@ class Contact {
 		std::string		firstName;
 		std::string		lastName;
 		std::string		nickname;
-		int				number;
+		std::string		number;
 		std::string		secret;
 		static std::string truncate(std::string str);
 
 	public:
 		Contact();
-		Contact(std::string fN, std::string lN, std::string nick, int nbr, std::string sec);
+		Contact(std::string fN, std::string lN, std::string nick, std::string nbr, std::string sec);
 		~Contact();
 		std::string getTruncatedFirstName();
 		std::string getTruncatedLastName();
 		std::string getTruncatedNickname();
+		std::string getFirstName();
+		std::string getLastName();
+		std::string getNickname();
+		std::string getNumber();
+		std::string getSecret();
 };
