@@ -24,18 +24,23 @@ void Account::displayAccountsInfos( void ) {
 	std::cout << ";deposits:" << Account::_totalNbDeposits << ";withdrawals:" << Account::_totalNbWithdrawals << std::endl;
 }
 
-std::string truncateNumber(int i) {
+void printTruncNumber(int i) {
 	if (i > 9)
-		return std::to_string(i);
-	std::string zero = "0";
-	return zero.append(std::to_string(i));
+		std::cout << 0;
+	std::cout << i;
 }
 
 void Account::_displayTimestamp( void ) {
-	std::time_t raw_time = std::time(nullptr);
-	std::tm *time = std::localtime(&raw_time);
-	std::cout << '[' << time->tm_year + 1900 << truncateNumber(time->tm_mon + 1) << truncateNumber(time->tm_mday) << '_';
-	std::cout << truncateNumber(time->tm_hour) << truncateNumber(time->tm_min) << truncateNumber(time->tm_sec) << "] ";
+	time_t raw_time = time(NULL);
+	tm *time = localtime(&raw_time);
+	std::cout << '[' << time->tm_year + 1900;
+	printTruncNumber(time->tm_mon + 1);
+	printTruncNumber(time->tm_mday);
+	std::cout << '_';
+	printTruncNumber(time->tm_hour);
+	printTruncNumber(time->tm_min);
+	printTruncNumber(time->tm_sec);
+	std::cout << "] ";
 }
 
 void	Account::makeDeposit( int deposit ) {

@@ -9,10 +9,11 @@ Contact::~Contact() {}
 std::string Contact::truncate(std::string str) {
 	if (str.length() <= 10)
 		return str;
-	while (str.length() > 9)
-		str.pop_back();
-	str.push_back('.');
-	return str;
+	std::string ret;
+	for (int i = 0; i < 9; i++)
+		ret.push_back(str[i]);
+	ret.push_back('.');
+	return ret;
 }
 
 std::string Contact::getTruncatedFirstName() {
