@@ -25,7 +25,7 @@ void Account::displayAccountsInfos( void ) {
 }
 
 void printTruncNumber(int i) {
-	if (i > 9)
+	if (i < 10)
 		std::cout << 0;
 	std::cout << i;
 }
