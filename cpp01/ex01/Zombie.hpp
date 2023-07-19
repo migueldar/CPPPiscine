@@ -1,6 +1,6 @@
-#include <iostream>
-
 #pragma once
+
+#include <iostream>
 
 class Zombie {
 	private:
