@@ -35,13 +35,13 @@ int ft_sed(char** argv) {
 	std::ofstream fileReplace;
 	std::string fileName = argv[1];
 
-	file.open(fileName, std::ifstream::in);
+	file.open(argv[1], std::ifstream::in);
 	if (!file) {
 		std::cerr << "Error opening the input file" << std::endl;
 		return 1;
 	}
 
-	fileReplace.open(fileName + ".replace", std::ofstream::out | std::ofstream::trunc);
+	fileReplace.open((fileName + ".replace").c_str(), std::ofstream::out | std::ofstream::trunc);
 	if (!fileReplace) {
 		std::cerr << "Error opening the output file" << std::endl;
 		return 1;
