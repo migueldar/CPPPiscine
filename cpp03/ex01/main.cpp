@@ -19,9 +19,16 @@ int main() {
 	std::cout << std::endl << std::endl;
 	{
 		ClapTrap trap("itsa me");
-
-		for (int i = 0; i < 10; i++)
-			trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
+		trap.attack("mario");
 		trap.attack("mario");
 		trap.beRepaired(10);
 	}		
