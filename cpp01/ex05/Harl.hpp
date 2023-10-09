@@ -8,6 +8,7 @@ class Harl {
 		void info() const;
 		void warning() const;
 		void error() const;
+
 	public:
 		Harl();
 		~Harl();

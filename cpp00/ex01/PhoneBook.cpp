@@ -16,6 +16,13 @@ bool allDigits(const std::string str) {
 	return true;
 }
 
+bool allSpaces(const std::string str) {
+	for (size_t i = 0; i < str.length(); ++i)
+		if (!isspace(str[i]))
+			return false;
+	return true;
+}
+
 std::string substituteChar(std::string str, char from, char to) {
 	for (size_t i = 0; i < str.length(); ++i) 
 		if (str[i] == from)
@@ -26,11 +33,11 @@ std::string substituteChar(std::string str, char from, char to) {
 std::string PhoneBook::askForInput(const std::string inputAsker) {
 	std::string aux;
 
-	while (aux.empty()) {
+	while (aux.empty() || allSpaces(aux)) {
 		std::cout << inputAsker << ": ";
 		std::getline(std::cin, aux);
 		if (std::cin.eof()) exit(1);
-		if (aux.empty())
+		if (aux.empty() || allSpaces(aux))
 			std::cout << "Cannot be empty, try again" << std::endl;
 	}
 	aux = substituteChar(aux, '\t', ' ');

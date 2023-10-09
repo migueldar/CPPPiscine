@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 
+// void leaks() { system("leaks -q sed"); }
+
 std::string readIstream(std::ifstream& file) {
 	std::string ret = "";
 	std::string aux; 

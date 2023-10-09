@@ -2,6 +2,8 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
+// void leaks() { system("leaks -q violence"); }
+
 int main()
 {
 	{
