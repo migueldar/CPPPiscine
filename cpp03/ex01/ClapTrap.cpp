@@ -9,7 +9,7 @@ ClapTrap::ClapTrap(std::string name): _name(name), _hitP(10), _energyP(10), _att
 }
 
 ClapTrap::ClapTrap(std::string name, uint hp, uint ep, uint ad, uint maxhp): _name(name), _hitP(hp), _energyP(ep), _attackD(ad), _maxhp(maxhp) {
-	std::cout << "ClapTrap constructor called for " << name << std::endl;
+	std::cout << "ClapTrap full constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const& other): _maxhp(10) {
