@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() {
+ClapTrap::ClapTrap(): _name("unnamed"), _hitP(10), _energyP(10), _attackD(0) {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
@@ -14,11 +14,14 @@ ClapTrap::ClapTrap(ClapTrap const& other) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called for " << _name << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const& rhs) {
-	(void) rhs;
+	this->_attackD = rhs.getAttackD();
+	this->_energyP = rhs.getEnergyP();
+	this->_hitP = rhs.getHitP();
+	this->_name = rhs.getName();
 	std::cout << "ClapTrap copy assignment operator called" << std::endl;
 	return (*this);
 }

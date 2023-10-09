@@ -2,18 +2,22 @@
 
 #include <iostream>
 
+typedef unsigned int	uint;
+
 class ClapTrap {
 
-private:
+protected:
 	std::string _name;
-	unsigned int _hitP;
-	unsigned int _energyP;
-	unsigned int _attackD;
+	uint _hitP;
+	uint _energyP;
+	uint _attackD;
+	uint const _maxhp;
 
 public:
 	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(ClapTrap const& other);
+	ClapTrap(std::string name, uint hp, uint ep, uint ad, uint maxhp);
 	~ClapTrap();
 	ClapTrap &operator=(ClapTrap const& rhs);
 	std::string getName() const;
