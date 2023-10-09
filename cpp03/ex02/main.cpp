@@ -1,9 +1,9 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main() {
 	{
-		ScavTrap clap("luigi");
-		ScavTrap ccclap;
+		FragTrap clap("luigi");
+		FragTrap ccclap;
 
 		clap.attack("mario");
 		clap.beRepaired(22);
@@ -22,10 +22,10 @@ int main() {
 	}
 	std::cout << std::endl << std::endl << std::endl;
 	{
-		ScavTrap trap("itsa me");
-		ScavTrap tttrap(trap);
+		FragTrap trap("itsa me");
+		FragTrap tttrap(trap);
 
-		for (int i = 0; i < 50; i++)
+		for (int i = 0; i < 100; i++)
 			trap.attack("mario");
 		trap.attack("mario");
 		trap.beRepaired(10);
@@ -35,10 +35,10 @@ int main() {
 	}
 	std::cout << std::endl << std::endl << std::endl;
 	{
-		ScavTrap flap;
+		FragTrap flap;
 
 		std::cout << std::endl << flap << std::endl;
 		flap.attack("a");
-		flap.guardGate();
+		flap.highFivesGuys();
 	}
 }
