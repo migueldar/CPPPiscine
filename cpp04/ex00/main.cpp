@@ -2,9 +2,6 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-//missing to check for leaks
-//missing more tests (copy constructor, assignment operator)
-
 int main()
 {
 	{
