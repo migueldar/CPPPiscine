@@ -3,10 +3,27 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-//missing brain into animals
+// void leaks() { system("leaks -q smartAnimals"); }
 
 int main()
 {
+	// atexit(leaks);
+	{
+		//test for correct deepcopy
+		Brain b;
+		Brain c;
+
+		for (int i = 0; i < 10; i++)
+			b.addIdea("hola");
+		b.addIdea("adios");
+		c = b;
+		std::cout << b << std::endl;
+		std::cout << c << std::endl;
+		b.addIdea("tolai");
+		std::cout << b << std::endl;
+		std::cout << c << std::endl;
+	}
+	std::cout << std::endl << std::endl;
 	{
 		//test for correct deepcopy
 		Brain b;
@@ -53,9 +70,21 @@ int main()
 	}
 	std::cout << std::endl << std::endl;
 	{
-		Animal *a = new Cat();
-		Animal *b = new Cat
-		a->makeSound();
+		Cat a;
+		Cat b;
 
+		a.addIdea("dani");
+		a.addIdea("es un poco tolai");
+		b = a;
+		Cat c(a);
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << c << std::endl;
+		a.addIdea("es cierto");
+		b.addIdea("es broma");
+		c.addIdea("quizas...");
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << c << std::endl;
 	}
 }

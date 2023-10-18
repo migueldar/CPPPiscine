@@ -15,8 +15,10 @@ public:
 	~Cat();
 	Cat &operator=(Cat const& rhs);
 	void makeSound() const;
+	int addIdea(std::string idea);
+	Brain* getBrain() const;
 };
 
-std::ostream& operator<<(std::ostream& o, Animal const& prt);
+std::ostream& operator<<(std::ostream& o, Cat const& prt);
 
 #endif

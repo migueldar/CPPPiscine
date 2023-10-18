@@ -15,6 +15,10 @@ public:
 	~Dog();
 	Dog &operator=(Dog const& rhs);
 	void makeSound() const;
+	int addIdea(std::string idea);
+	Brain* getBrain() const;
 };
+
+std::ostream& operator<<(std::ostream& o, Dog const& prt);
 
 #endif

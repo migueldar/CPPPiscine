@@ -2,6 +2,8 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
+// void leaks() { system("leaks -q animals"); }
+
 int main()
 {
 	{
