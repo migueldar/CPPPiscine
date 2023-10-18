@@ -25,22 +25,6 @@ int main()
 	}
 	std::cout << std::endl << std::endl;
 	{
-		//test for correct deepcopy
-		Brain b;
-		Brain c;
-
-		for (int i = 0; i < 10; i++)
-			b.addIdea("hola");
-		b.addIdea("adios");
-		c = b;
-		std::cout << b << std::endl;
-		std::cout << c << std::endl;
-		b.addIdea("tolai");
-		std::cout << b << std::endl;
-		std::cout << c << std::endl;
-	}
-	std::cout << std::endl << std::endl;
-	{
 		//test for brain fullness
 		Brain b;
 
