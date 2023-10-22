@@ -31,23 +31,18 @@ int main()
 	}
 	std::cout << std::endl << std::endl;
 
-	try {
+	{
 		Form f("fff", 100, 4);
 		Bureaucrat b("bbb", 101);
 		b.signForm(f);
-	} catch (const std::exception& e) {
-		std::cout << e.what() << std::endl;
 	}
-	std::cout << std::endl << std::endl;
 
-	try {
+	{
 		Form f("fff", 100, 4);
 		Bureaucrat b("bbb", 99);
 		b.signForm(f);
 		std::cout << f << std::endl;
 		b.signForm(f);
-	} catch (const std::exception& e) {
-		std::cout << e.what() << std::endl;
 	}
 
 	{

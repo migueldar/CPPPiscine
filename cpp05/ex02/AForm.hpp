@@ -9,6 +9,7 @@ class Bureaucrat;
 class AForm {
 
 private:
+	const std::string	_name;
 	const std::string	_target;
 	const int			_gradeSign;
 	const int			_gradeExec;
@@ -32,9 +33,10 @@ public:
 		}
 	};
 	AForm();
-	AForm(std::string target, int gradeSign, int gradeExec);
+	AForm(std::string name, std::string target, int gradeSign, int gradeExec);
 	AForm(AForm const& other);
 	virtual ~AForm();
+	const std::string& getName() const;
 	const std::string& getTarget() const;
 	const int& getGradeSign() const;
 	const int& getGradeExec() const;

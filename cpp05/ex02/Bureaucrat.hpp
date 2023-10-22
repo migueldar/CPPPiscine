@@ -33,8 +33,8 @@ public:
 	void increaseGrade();
 	void decreaseGrade();
 	void signForm(AForm& f) const;
+	void executeForm(AForm const& form);
 };
-
 
 std::ostream &operator<<(std::ostream &o, Bureaucrat const &prt);
 

@@ -1,10 +1,10 @@
 #include "AForm.hpp"
 
-AForm::AForm(): _target("notarget"), _gradeSign(150), _gradeExec(150), _signed(false) {
+AForm::AForm(): _name("noname"), _target("notarget"), _gradeSign(150), _gradeExec(150), _signed(false) {
 	std::cout << "AForm default constructor called" << std::endl;
 }
 
-AForm::AForm(std::string target, int gradeSign, int gradeExec): _target(target), _gradeSign(gradeSign), _gradeExec(gradeExec), _signed(false) {
+AForm::AForm(std::string name, std::string target, int gradeSign, int gradeExec): _name(name), _target(target), _gradeSign(gradeSign), _gradeExec(gradeExec), _signed(false) {
 	std::cout << "AForm params constructor called" << std::endl;
 	if (gradeExec < 1)
 		throw AForm::GradeTooHighException();
@@ -28,6 +28,10 @@ AForm& AForm::operator=(AForm const& rhs) {
 	_signed = rhs._signed;
 	std::cout << "AForm copy assignment operator called" << std::endl;
 	return (*this);
+}
+
+const std::string &AForm::getName() const {
+	return _name;
 }
 
 const std::string &AForm::getTarget() const {
@@ -59,7 +63,7 @@ void AForm::beSigned(Bureaucrat const& b) {
 }
 
 std::ostream& operator<<(std::ostream& o, AForm const& prt) {
-	o << "AForm with target: " << prt.getTarget() << ", sign grade: " << prt.getGradeSign() << ", exec grade: ";
-	o << prt.getGradeExec() << ", signed: " << prt.getSigned();
+	o << "AForm " << prt.getName() << "with target: " << prt.getTarget() << ", sign grade: " << prt.getGradeSign();
+	o  << ", exec grade: " << prt.getGradeExec() << ", signed: " << prt.getSigned();
 	return (o);
 }

@@ -1,14 +1,14 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("default", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("shruberry creation", "default", 145, 137) {
 	std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm(target, 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("shruberry creation", target, 145, 137) {
 	std::cout << "ShrubberyCreationForm params constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& other): AForm(other.getTarget(), 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& other): AForm(other.getName(), other.getTarget(), 145, 137) {
 	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
@@ -28,7 +28,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	if (executor.getGrade() > getGradeExec())
 		throw AForm::GradeTooLowException();
 
-	file.open((getTarget() + "_shrubbery").c_str());
+	file.open((getTarget() + "_shrubbery").c_str(), std::ofstream::out | std::ofstream::trunc);
 	if (!file) {
 		throw ShrubberyCreationForm::OutputFileException();
 	}
