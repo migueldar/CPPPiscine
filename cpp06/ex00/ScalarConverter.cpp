@@ -19,6 +19,19 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter const& rhs) {
 	return (*this);
 }
 
+static void singleCharPrint(double c) {
+	std::cout << "char: ";
+	if (c <= 127 && c >= -128)
+	{
+		if (isprint(static_cast<char>(c)))
+			std::cout << static_cast<char>(c) << std::endl;
+		else
+			std::cout << "Non displayable" << std::endl;
+	}
+	else 
+		std::cout << "impossible" << std::endl;
+}
+
 static void charPrinter(char c) {
 	std::cout << "char: ";
 	if (isprint(c))
@@ -31,11 +44,7 @@ static void charPrinter(char c) {
 }
 
 static void intPrinter(int c) {
-	std::cout << "char: ";
-	if (isprint(static_cast<char>(c)))
-		std::cout << static_cast<char>(c) << std::endl;
-	else
-		std::cout << "Non displayable" << std::endl;
+	singleCharPrint(c);
 	std::cout << "int: " << c << std::endl;
 	if (c < 1000000 && c > -1000000) {
 		std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
@@ -48,17 +57,12 @@ static void intPrinter(int c) {
 }
 
 static void floatPrinter(float c) {
-	std::cout << "char: ";
-	if (isprint(static_cast<char>(c)))
-		std::cout << static_cast<char>(c) << std::endl;
-	else
-		std::cout << "Non displayable" << std::endl;
-
+	singleCharPrint(c);
 	std::cout << "int: ";
 	if (c >= INT_MIN && c <= INT_MAX)
 		std::cout << static_cast<int>(c) << std::endl;
 	else
-		std::cout << "Non displayable" << std::endl;
+		std::cout << "impossible" << std::endl;
 
 	std::cout << "float: " << c;
 	if (std::floor(c) == c && c < 1000000 && c > -1000000)
@@ -74,17 +78,12 @@ static void floatPrinter(float c) {
 }
 
 static void doublePrinter(double c) {
-	std::cout << "char: ";
-	if (isprint(static_cast<char>(c)))
-		std::cout << static_cast<char>(c) << std::endl;
-	else
-		std::cout << "Non displayable" << std::endl;
-	
+	singleCharPrint(c);
 	std::cout << "int: ";
 	if (c >= INT_MIN && c <= INT_MAX)
 		std::cout << static_cast<int>(c) << std::endl;
 	else
-		std::cout << "Non displayable" << std::endl;
+		std::cout << "impossible" << std::endl;
 	
 	std::cout << "float: " << static_cast<float>(c);
 	if (std::floor(c) == c && c < 1000000 && c > -1000000)
