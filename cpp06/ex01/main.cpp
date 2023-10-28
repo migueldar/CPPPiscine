@@ -1,12 +1,11 @@
 #include "Serializer.hpp"
 
 int main() {
-	Serializer s;
 	Data* a = new Data();
 	std::cout << *a << std::endl;
 
-	uintptr_t u = s.serialize(a);
-	Data* b = s.deserialize(u);
+	uintptr_t u = Serializer::serialize(a);
+	Data* b = Serializer::deserialize(u);
 	
 	std::cout << *b << std::endl;
 	a->setA(10);

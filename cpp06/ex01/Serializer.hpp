@@ -7,9 +7,11 @@
 
 class Serializer {
 
-public:
+private:
 	Serializer();
 	Serializer(Serializer const& other);
+
+public:
 	~Serializer();
 	Serializer &operator=(Serializer const& rhs);
 	static uintptr_t serialize(Data* ptr);

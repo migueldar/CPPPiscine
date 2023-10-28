@@ -8,9 +8,11 @@
 
 class ScalarConverter {
 
-public:
+private:
 	ScalarConverter();
 	ScalarConverter(ScalarConverter const& other);
+
+public:
 	~ScalarConverter();
 	ScalarConverter &operator=(ScalarConverter const& rhs);
 	static void convert(char* str);
