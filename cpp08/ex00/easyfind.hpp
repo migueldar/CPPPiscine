@@ -1,6 +1,7 @@
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
+//must change to use algorithms library
 template <typename T>
 int easyFind(const T& container, int N) {
 	int counter = 0;
