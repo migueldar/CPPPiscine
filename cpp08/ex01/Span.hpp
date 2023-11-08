@@ -29,10 +29,15 @@ public:
 	Span(unsigned int counter);
 	Span(Span const& other);
 	~Span();
-	void addNumber(int n);
-	void addNumbers(int n);
+
 	int shortestSpan();
 	int longestSpan();
+	void addNumber(int n);
+
+	template <typename InputIterator>
+	void addNumbers(InputIterator first, InputIterator last) {
+		
+	};
 };
 
 std::ostream &operator<<(std::ostream &o, Span const &prt);
