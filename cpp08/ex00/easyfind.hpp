@@ -5,10 +5,10 @@
 
 template <typename T>
 int easyFind(const T& container, int n) {
-	typename T::const_iterator it = std::find(container.begin(), container.end(), n);
-	if (it == container.end())
+	typename T::const_iterator it = std::find(container.cbegin(), container.cend(), n);
+	if (it == container.cend())
 		return -1;
-	return std::distance(container.begin(), it);
+	return std::distance(container.cbegin(), it);
 }
 
 #endif
