@@ -22,13 +22,12 @@ int Span::shortestSpan() const {
 		throw BadSpanSize();
 
 	int ret = abs(_vector[0] - _vector[1]);
-	
-	for (std::vector<int>::const_iterator it = _vector.cbegin(); it < _vector.cend(); it++) {
-		for (std::vector<int>::const_iterator jt = it + 1; jt < _vector.cend(); jt++) {
-			if (abs(*it - *jt) < ret)
-				ret = abs(*it - *jt);
-		}
-	}
+
+	std::vector<int> aux = _vector;
+	std::sort(aux.begin(), aux.end());
+
+	for (std::vector<int>::const_iterator it = ++(aux.begin()); it < aux.end(); it++)
+		ret = std::min(ret, abs(*it - *(it - 1)));
 
 	return ret;
 }
@@ -39,9 +38,8 @@ static int vector_min(std::vector<int> vec) {
 	
 	int min = vec[0];
 
-	for (std::vector<int>::const_iterator it = vec.cbegin(); it < vec.cend(); it++)
-		if (*it < min)
-			min = *it;
+	for (std::vector<int>::const_iterator it = vec.begin(); it < vec.end(); it++)
+		min = std::min(min, *it);
 	return min;
 }
 
@@ -51,9 +49,8 @@ static int vector_max(std::vector<int> vec) {
 
 	int max = vec[0];
 
-	for (std::vector<int>::const_iterator it = vec.cbegin(); it < vec.cend(); it++)
-		if (*it > max)
-			max = *it;
+	for (std::vector<int>::const_iterator it = vec.begin(); it < vec.end(); it++)
+		max = std::max(max, *it);
 	return max;
 }
 

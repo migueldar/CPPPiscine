@@ -35,8 +35,8 @@ public:
 	void addNumber(int n);
 
 	template <typename T>
-	void addNumbers(T begin, T last) {
-		while (begin < last) {
+	void addNumbers(T begin, T end) {
+		while (begin < end) {
 			this->addNumber(*begin);
 			begin++;
 		}

@@ -69,7 +69,7 @@ int main() {
 		v.push_back(13);
 		v.push_back(50);
 
-		s.addNumbers(v.cbegin(), v.cend());
+		s.addNumbers(v.begin(), v.end());
 
 		std::cout << s.shortestSpan() << std::endl;
 		std::cout << s.longestSpan() << std::endl;
