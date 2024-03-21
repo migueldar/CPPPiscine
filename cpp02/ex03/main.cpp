@@ -33,5 +33,12 @@ int main() {
 		std::cout << "P5: " << bsp(a, b, c, point1) << std::endl;
 		std::cout << "P6: " << bsp(a, b, c, point2) << std::endl;
 	}
+	{
+		Point a(-1, 1);
+		Point b(0, 2);
+		Point c(2, 0);
+		Point point(0.9, 0.9);
+		std::cout << "P7: " << bsp(a, b, c, point) << std::endl;
+	}
 	return 0;
 }
