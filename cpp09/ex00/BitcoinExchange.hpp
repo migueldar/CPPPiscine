@@ -19,9 +19,9 @@ public:
 			return "Error: cannot open data file";
 		}
 	};
-	class DateNotInDatabase: public std::exception {
+	class DateTooEarly: public std::exception {
 		virtual const char* what() const throw() {
-			return "Error: date not in database";
+			return "Error: date too early";
 		}
 	};
 

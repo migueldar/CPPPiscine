@@ -39,9 +39,11 @@ bool	solveLine(std::ifstream& in, BitcoinExchange& exchange) {
 	float		amount;
 	float		value;
 
+	if (in.eof())
+		return false;
 	std::getline(in, line);
 	if (line == "")
-		return false;
+		return true;
 	if (line.length() <= 13 || line[10] != ' ' || line[11] != '|' || line[12] != ' ') {
 		std::cerr << "Error: bad input => " << line << std::endl;
 		return true; 
@@ -69,7 +71,7 @@ bool	solveLine(std::ifstream& in, BitcoinExchange& exchange) {
 		value = exchange.searchDate(date);
 	}
 	catch (const std::exception& e) {
-		std::cerr << e.what() << ": "<< strdate << std::endl;
+		std::cerr << e.what() << " => "<< strdate << std::endl;
 		return true;
 	}
 	std::cout << strdate << " => " << amount << " = " << value * amount << std::endl;

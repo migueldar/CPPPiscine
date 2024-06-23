@@ -35,5 +35,7 @@ BitcoinExchange& BitcoinExchange::operator=(BitcoinExchange const& rhs) {
 }
 
 float BitcoinExchange::searchDate(Date d) const {
+	if (database.lower_bound(d) == database.end())
+		throw DateTooEarly();
 	return (database.lower_bound(d))->second;
 }
