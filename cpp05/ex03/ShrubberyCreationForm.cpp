@@ -25,6 +25,8 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	std::ofstream file;
 
+	if (!getSigned())
+		throw AForm::NotSignedException();
 	if (executor.getGrade() > getGradeExec())
 		throw AForm::GradeTooLowException();
 

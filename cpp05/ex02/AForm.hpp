@@ -32,6 +32,12 @@ public:
 			return "already signed";
 		}
 	};
+	class NotSignedException: public std::exception {
+		virtual const char* what() const throw() {
+			return "not signed";
+		}
+	};
+
 	AForm();
 	AForm(std::string name, std::string target, int gradeSign, int gradeExec);
 	AForm(AForm const& other);

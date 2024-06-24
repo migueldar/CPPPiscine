@@ -23,6 +23,8 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const& r
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
+	if (!getSigned())
+		throw AForm::NotSignedException();
 	if (executor.getGrade() > getGradeExec())
 		throw AForm::GradeTooLowException();
 	std::cout << "Drilling noises... " << getTarget();
