@@ -19,22 +19,22 @@ private:
 public:
 	class GradeTooHighException: public std::exception {
 		virtual const char* what() const throw() {
-			return "grade too high";
+			return "Grade too high";
 		}
 	};
 	class GradeTooLowException: public std::exception {
 		virtual const char* what() const throw() {
-			return "grade too low";
+			return "Grade too low";
 		}
 	};
 	class AlreadySignedException: public std::exception {
 		virtual const char* what() const throw() {
-			return "already signed";
+			return "Already signed";
 		}
 	};
 	class NotSignedException: public std::exception {
 		virtual const char* what() const throw() {
-			return "not signed";
+			return "Not signed";
 		}
 	};
 	AForm();

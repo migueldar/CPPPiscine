@@ -30,13 +30,12 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 	std::cout << std::endl << std::endl;
-
 	{
 		Form f("fff", 100, 4);
 		Bureaucrat b("bbb", 101);
 		b.signForm(f);
 	}
-
+	std::cout << std::endl << std::endl;
 	{
 		Form f("fff", 100, 4);
 		Bureaucrat b("bbb", 99);
@@ -44,7 +43,7 @@ int main()
 		std::cout << f << std::endl;
 		b.signForm(f);
 	}
-
+	std::cout << std::endl << std::endl;
 	{
 		Form f("fff", 100, 4);
 		Form a(f);
