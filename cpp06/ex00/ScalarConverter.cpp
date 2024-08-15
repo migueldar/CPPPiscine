@@ -59,7 +59,7 @@ static void intPrinter(int c) {
 static void floatPrinter(float c) {
 	singleCharPrint(c);
 	std::cout << "int: ";
-	if (c >= INT_MIN && c <= INT_MAX)
+	if (c >= INT_MIN && (long) c <= INT_MAX)
 		std::cout << static_cast<int>(c) << std::endl;
 	else
 		std::cout << "impossible" << std::endl;
