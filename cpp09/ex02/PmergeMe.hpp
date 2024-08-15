@@ -12,9 +12,8 @@ private:
 	std::vector<unsigned> vec;
 	std::list<unsigned> list;
 
-	//returns the next to insert, given the current one and the total size
-	size_t nextToInsert(size_t curr, size_t size);
-	//returns until which to compare, give the current 
+	//given the size of a vector, it returns the order of insertion
+	std::vector<size_t> vecToInsert(size_t size);
 
 public:
 	PmergeMe();
@@ -24,8 +23,9 @@ public:
 	const std::vector<unsigned>& get() const;
 	void addElement(unsigned element);
 	void sortVec();
-	std::vector<unsigned> sortVec(std::vector<unsigned> vec);
+	std::vector<unsigned> sortVec(const std::vector<unsigned>& vec);
 	std::vector<unsigned> insertVec(std::vector<unsigned> vec, std::vector<unsigned> toInsert);
+	std::vector<unsigned> createToInsert(const std::vector<unsigned>& toRec, const std::vector<unsigned>& vec);
 	void sortList();
 };
 
