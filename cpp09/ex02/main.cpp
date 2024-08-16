@@ -31,16 +31,25 @@ int main(int argc, char** argv) {
 			pmer.addElement(atou(argv[i]));
 		if (pmer.hasDuplicates())
 			throw std::runtime_error("the input list has duplicates");
-		std::cout << "Before:  " << pmer << std::endl;
-
-		//time
-		pmer.sortVec();
-		//time
-		pmer.sortList();
-		std::cout << "After:   " << pmer << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 		return 1;
 	}
+	clock_t start, end;
+	double time;
+
+	std::cout << "Before:  " << pmer << std::endl;
+	start = clock();
+	pmer.sortVec();
+	end = clock();
+	time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+	std::cout << "Time taken by std::vector: " << time * 1000 << " ms" << std::endl;
+	
+	start = clock();
+	pmer.sortList();
+	end = clock();
+	time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+	std::cout << "Time taken by std::list:   " << time * 1000 << " ms" << std::endl;
+	std::cout << "After:   " << pmer << std::endl;
 	return 0;
 }
