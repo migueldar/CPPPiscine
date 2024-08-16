@@ -30,12 +30,13 @@ int main(int argc, char** argv) {
 		for (int i = 1; i < argc; i++)
 			pmer.addElement(atou(argv[i]));
 		if (pmer.hasDuplicates())
-			throw std::runtime_error("the list has duplicates");
+			throw std::runtime_error("the input list has duplicates");
 		std::cout << "Before:  " << pmer << std::endl;
 
+		//time
 		pmer.sortVec();
-	
-		// pmer.sortList();
+		//time
+		pmer.sortList();
 		std::cout << "After:   " << pmer << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
