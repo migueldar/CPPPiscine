@@ -4,7 +4,7 @@
 #include <algorithm>
 
 template <typename T>
-int easyFind(const T& container, int n) {
+long easyFind(const T& container, int n) {
 	typename T::const_iterator it = std::find(container.begin(), container.end(), n);
 	if (it == container.end())
 		return -1;
