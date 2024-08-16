@@ -16,6 +16,12 @@ PmergeMe& PmergeMe::operator=(PmergeMe const& rhs) {
 	return (*this);
 }
 
+void print(std::vector<unsigned>& v) {
+	for (size_t i = 0; i < v.size(); i++)
+		std::cout << v[i] << " ";
+	std::cout << std::endl;
+}
+
 const std::vector<unsigned>& PmergeMe::get() const {
 	return vec;
 }
@@ -25,7 +31,7 @@ void PmergeMe::addElement(unsigned element) {
 	list.push_back(element);
 }
 
-std::vector<size_t> PmergeMe::vecToInsert(size_t size) {
+std::vector<size_t> PmergeMe::orderInsert(size_t size) {
 	std::vector<size_t> ret;
 	size_t prev = 0;
 	size_t curr = 2;
@@ -66,30 +72,32 @@ std::vector<unsigned> PmergeMe::sortVec(const std::vector<unsigned>& vec) {
 
 	if (vec.size() == 0 || vec.size() == 1)
 		return vec;
-	for (size_t i = 0; i < vec.size() / 2; i += 2) {
-		if (vec[i] < vec[i + 1])
-			toRec.push_back(vec[i + 1]);
+	for (size_t i = 0; i < vec.size() / 2; i++) {
+		if (vec[2 * i] < vec[2 * i + 1])
+			toRec.push_back(vec[2 * i + 1]);
 		else
-			toRec.push_back(vec[i]);
+			toRec.push_back(vec[2 * i]);
 	}
 
+	// std::cout << "toRec: ";
+	// print(toRec);
 	ret = sortVec(toRec);
-	toInsert = createToInsert(toRec, vec);
+	// std::cout << "ret: ";
+	// print(ret);
+	toInsert = createToInsert(ret, vec);
+	// std::cout << "toInsert: ";
+	// print(toInsert);
 	ret = insertVec(ret, toInsert);
 
 	return ret;
 }
 
-std::vector<unsigned> PmergeMe::insertVec(std::vector<unsigned> vec, std::vector<unsigned> toInsert) {
-
-}
-
-std::vector<unsigned> PmergeMe::createToInsert(const std::vector<unsigned>& toRec, const std::vector<unsigned>& vec) {
+std::vector<unsigned> PmergeMe::createToInsert(const std::vector<unsigned>& toRecSorted, const std::vector<unsigned>& vec) {
 	std::vector<unsigned> ret;
 	
-	for (size_t i = 0; i < toRec.size(); i++) {
+	for (size_t i = 0; i < toRecSorted.size(); i++) {
 		for (size_t j = 0; j < vec.size(); j++) {
-			if (toRec[i] == vec[j]) {
+			if (toRecSorted[i] == vec[j]) {
 				if (j % 2 == 0)
 					ret.push_back(vec[j + 1]);
 				else
@@ -100,6 +108,33 @@ std::vector<unsigned> PmergeMe::createToInsert(const std::vector<unsigned>& toRe
 	if (vec.size() % 2 == 1)
 		ret.push_back(vec.back());
 	return ret;
+}
+
+//vectors of size 0 will never enter this function
+std::vector<unsigned> PmergeMe::insertVec(const std::vector<unsigned>& vec, const std::vector<unsigned>& toInsert) {
+	std::vector<unsigned> ret = vec;
+	ret.insert(ret.begin(), toInsert[0]);
+	std::vector<size_t> order = orderInsert(toInsert.size());
+
+	for (size_t i = 1; i < toInsert.size(); i++) {
+		std::vector<unsigned>::iterator pos;
+		if (order[i] >= vec.size())
+			pos = ret.end();
+		else
+			pos = std::find(ret.begin(), ret.end(), vec[order[i]]) + 1;
+		ret.insert(whereInsert(ret.begin(), pos, toInsert[order[i]]), toInsert[order[i]]);
+	}
+	return ret;
+}
+
+std::vector<unsigned>::iterator PmergeMe::whereInsert(std::vector<unsigned>::iterator begin, std::vector<unsigned>::iterator end, unsigned n) {
+	size_t size = end - begin;
+
+	if (size == 1)
+		return *begin > n ? begin : begin + 1;
+	if (size == 2)
+		return *begin > n ? begin : whereInsert(begin + 1, end, n);
+	return *(begin + size / 2) > n ? whereInsert(begin, begin + size / 2, n) : whereInsert(begin + size / 2 + 1, end, n);
 }
 
 std::ostream& operator<<(std::ostream& o, PmergeMe const& prt) {

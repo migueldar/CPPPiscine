@@ -20,7 +20,6 @@ unsigned atou(std::string str) {
 	return ret;
 }
 
-//think about duplicates (joan dice que es movidon)
 int main(int argc, char** argv) {
 	if (argc < 2) {
 		std::cerr << "usage: ./PmergeMe <list>" << std::endl;
@@ -30,11 +29,14 @@ int main(int argc, char** argv) {
 	try {
 		for (int i = 1; i < argc; i++)
 			pmer.addElement(atou(argv[i]));
+		if (pmer.hasDuplicates())
+			throw std::runtime_error("the list has duplicates");
 		std::cout << "Before:  " << pmer << std::endl;
-		//TODO check for no repetition of elements, maybe a set could be used, so that duplicate elements are not allowed to be added
+
 		pmer.sortVec();
-		pmer.sortList();
-		std::cout << "After: " << pmer << std::endl;
+	
+		// pmer.sortList();
+		std::cout << "After:   " << pmer << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 		return 1;

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include <algorithm>
 
 class PmergeMe {
 
@@ -13,20 +14,21 @@ private:
 	std::list<unsigned> list;
 
 	//given the size of a vector, it returns the order of insertion
-	std::vector<size_t> vecToInsert(size_t size);
+	std::vector<size_t> orderInsert(size_t size);
 
 public:
 	PmergeMe();
 	PmergeMe(PmergeMe const& other);
 	~PmergeMe();
 	PmergeMe &operator=(PmergeMe const& rhs);
-	const std::vector<unsigned>& get() const;
-	void addElement(unsigned element);
-	void sortVec();
-	std::vector<unsigned> sortVec(const std::vector<unsigned>& vec);
-	std::vector<unsigned> insertVec(std::vector<unsigned> vec, std::vector<unsigned> toInsert);
-	std::vector<unsigned> createToInsert(const std::vector<unsigned>& toRec, const std::vector<unsigned>& vec);
-	void sortList();
+	bool							hasDuplicates();
+	const std::vector<unsigned>&	get() const;
+	void							addElement(unsigned element);
+	void							sortVec();
+	std::vector<unsigned>			sortVec(const std::vector<unsigned>& vec);
+	std::vector<unsigned>			createToInsert(const std::vector<unsigned>& toRecSorted, const std::vector<unsigned>& vec);
+	std::vector<unsigned>			insertVec(const std::vector<unsigned>& vec, const std::vector<unsigned>& toInsert);
+	std::vector<unsigned>::iterator	whereInsert(std::vector<unsigned>::iterator begin, std::vector<unsigned>::iterator end, unsigned n);
 };
 
 std::ostream &operator<<(std::ostream &o, PmergeMe const &prt);
